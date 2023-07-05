@@ -1,4 +1,4 @@
-# BlueMapDeathMarkers
+# BlueMap Death Markers
 
 [![GitHub Total Downloads](https://img.shields.io/github/downloads/TechnicJelle/BlueMapDeathMarkers/total?label=Downloads&color=success "Click here to download the plugin")](https://github.com/TechnicJelle/BlueMapDeathMarkers/releases/latest)
 [![Servers using this plugin](https://img.shields.io/bstats/servers/18983?label=Servers)](https://bstats.org/plugin/bukkit/BlueMap%20Death%20Markers/18983)
