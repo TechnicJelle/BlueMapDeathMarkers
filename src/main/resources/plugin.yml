@@ -1,0 +1,10 @@
+name: BlueMapDeathMarkers
+version: '${project.version}'
+main: com.technicjelle.bluemapdeathmarkers.BlueMapDeathMarkers
+api-version: '1.13'
+depend:
+  - BlueMap
+authors:
+  - TechnicJelle
+description: '${project.description}'
+website: '${project.url}'

@@ -1,0 +1,15 @@
+# Marker Set Options
+# Documentation: https://bluemap.bluecolored.de/wiki/customization/Markers.html#marker-sets
+MarkerSetName: "Death Markers"
+Toggleable: true
+DefaultHidden: false
+
+# If you want to use a custom icon, just replace the icon in your webroot.
+# You can use SVG or any other picture format (that is supported by Java)
+
+# How long the death marker should stay on the map for (in minutes)
+ExpireTimeInMinutes: 5
+
+# If you want to hide players in certain game modes, add them here.
+HiddenGameModes:
+  - spectator
