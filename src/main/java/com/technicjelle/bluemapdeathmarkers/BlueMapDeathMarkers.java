@@ -171,7 +171,8 @@ public final class BlueMapDeathMarkers extends JavaPlugin implements Listener {
 							.build()
 			);
 
-			String key = player.getUniqueId().toString();
+			String uuid = player.getUniqueId().toString();
+			String key = config.keepAllMarkers ? (uuid + "@" + System.currentTimeMillis()) : uuid;
 
 			// Add marker
 			markerSet.put(key, markerBuilder.build());

@@ -16,6 +16,7 @@ public class Config {
 	public String markerSetName;
 	public boolean toggleable;
 	public boolean defaultHidden;
+	public boolean keepAllMarkers;
 	public long expireTimeInMinutes;
 	public List<GameMode> hiddenGameModes;
 
@@ -35,6 +36,7 @@ public class Config {
 		markerSetName = configFile().getString("MarkerSetName");
 		toggleable = configFile().getBoolean("Toggleable");
 		defaultHidden = configFile().getBoolean("DefaultHidden");
+		keepAllMarkers = configFile().getBoolean("KeepAllMarkers");
 		expireTimeInMinutes = configFile().getLong("ExpireTimeInMinutes");
 		hiddenGameModes = parseGameModes(configFile().getStringList("HiddenGameModes"));
 	}

@@ -7,6 +7,9 @@ DefaultHidden: false
 # If you want to use a custom icon, just replace the icon in your webroot.
 # You can use SVG or any other picture format (that is supported by Java)
 
+# Do you want to keep all a player's death markers on the map or just their most recent one?
+KeepAllMarkers: false
+
 # How long the death marker should stay on the map for (in minutes)
 ExpireTimeInMinutes: 5
 
