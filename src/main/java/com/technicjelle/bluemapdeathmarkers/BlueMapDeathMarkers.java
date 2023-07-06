@@ -186,21 +186,21 @@ public final class BlueMapDeathMarkers extends JavaPlugin implements Listener {
 
 	private String formatPopup(String playerName, Location location) {
 		return "<div style='line-height: 1.2em;'>" +
-				"<div style='position: relative;top: 0;left: .5em;margin: 0 .5em;font-size: .9em;'>" + playerName + "</div>" +
-				"<div style='display: flex;justify-content: center;min-width: 9em'>" +
-				"<div style='margin: 0 .5em;'>" +
-				"<span style='color: var(--theme-fg-light);'>x:</span>" +
-				"<span class='value'> " + location.getBlockX() + "</span>" +
-				"</div>" +
-				"<div style='margin: 0 .5em;'>" +
-				"<span style='color: var(--theme-fg-light);'>y:</span>" +
-				"<span class='value'> " + location.getBlockY() + "</span>" +
-				"</div>" +
-				"<div style='margin: 0 .5em;'>" +
-				"<span style='color: var(--theme-fg-light);'>z:</span>" +
-				"<span class='value'> " + location.getBlockZ() + "</span>" +
-				"</div>" +
-				"</div>" +
+					"<div style='position: relative;top: 0;left: .5em;margin: 0 .5em;font-size: .9em;'>" + playerName + "</div>" +
+					"<div style='display: flex;justify-content: center;min-width: 9em'>" +
+						"<div style='margin: 0 .5em;'>" +
+							"<span style='color: var(--theme-fg-light);'>x:</span>" +
+							"<span class='value'> " + location.getBlockX() + "</span>" +
+						"</div>" +
+						"<div style='margin: 0 .5em;'>" +
+							"<span style='color: var(--theme-fg-light);'>y:</span>" +
+							"<span class='value'> " + location.getBlockY() + "</span>" +
+						"</div>" +
+						"<div style='margin: 0 .5em;'>" +
+							"<span style='color: var(--theme-fg-light);'>z:</span>" +
+							"<span class='value'> " + location.getBlockZ() + "</span>" +
+						"</div>" +
+					"</div>" +
 				"</div>";
 	}
 }
