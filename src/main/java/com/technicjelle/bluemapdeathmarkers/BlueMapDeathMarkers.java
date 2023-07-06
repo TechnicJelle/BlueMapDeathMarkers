@@ -154,7 +154,11 @@ public final class BlueMapDeathMarkers extends JavaPlugin implements Listener {
 
 		// Create marker-template
 		// (add 1.8 to y to place the marker at the head-position of the player, like BlueMap does with its player-markers)
-		POIMarker.Builder markerBuilder = POIMarker.builder().label(player.getName()).icon("assets/" + iconName, anchor).position(location.getX(), location.getY() + 1.8, location.getZ());
+		POIMarker.Builder markerBuilder = POIMarker.builder()
+				.label(player.getName())
+				.detail(formatPopup(player.getName(), location))
+				.icon("assets/" + iconName, anchor)
+				.position(location.getX(), location.getY() + 1.8, location.getZ());
 
 		// Create an icon and marker for each map of this world
 		for (BlueMapMap map : blueMapWorld.getMaps()) {
@@ -177,5 +181,25 @@ public final class BlueMapDeathMarkers extends JavaPlugin implements Listener {
 					() -> markerSet.remove(key),
 					config.expireTimeInMinutes * 20L * 60L);
 		}
+	}
+
+	private String formatPopup(String playerName, Location location) {
+		return "<div style='line-height: 1.2em;'>" +
+				"<div style='position: relative;top: 0;left: .5em;margin: 0 .5em;font-size: .9em;'>" + playerName + "</div>" +
+				"<div style='display: flex;justify-content: center;min-width: 9em'>" +
+				"<div style='margin: 0 .5em;'>" +
+				"<span style='color: var(--theme-fg-light);'>x:</span>" +
+				"<span class='value'> " + location.getBlockX() + "</span>" +
+				"</div>" +
+				"<div style='margin: 0 .5em;'>" +
+				"<span style='color: var(--theme-fg-light);'>y:</span>" +
+				"<span class='value'> " + location.getBlockY() + "</span>" +
+				"</div>" +
+				"<div style='margin: 0 .5em;'>" +
+				"<span style='color: var(--theme-fg-light);'>z:</span>" +
+				"<span class='value'> " + location.getBlockZ() + "</span>" +
+				"</div>" +
+				"</div>" +
+				"</div>";
 	}
 }
