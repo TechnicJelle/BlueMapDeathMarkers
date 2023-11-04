@@ -8,6 +8,7 @@ import de.bluecolored.bluemap.api.BlueMapMap;
 import de.bluecolored.bluemap.api.BlueMapWorld;
 import de.bluecolored.bluemap.api.markers.MarkerSet;
 import de.bluecolored.bluemap.api.markers.POIMarker;
+import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
@@ -46,6 +47,8 @@ public final class BlueMapDeathMarkers extends JavaPlugin implements Listener {
 
 	@Override
 	public void onEnable() {
+		new Metrics(this, 18983);
+
 		BlueMapAPI.onEnable(onEnable);
 
 		updateChecker = new UpdateChecker("TechnicJelle", "BlueMapDeathMarkers", getDescription().getVersion());
