@@ -49,10 +49,10 @@ public final class BlueMapDeathMarkers extends JavaPlugin implements Listener {
 	public void onEnable() {
 		new Metrics(this, 18983);
 
-		BlueMapAPI.onEnable(onEnable);
-
 		updateChecker = new UpdateChecker("TechnicJelle", "BlueMapDeathMarkers", getDescription().getVersion());
 		updateChecker.checkAsync();
+
+		BlueMapAPI.onEnable(onEnable);
 
 		getServer().getPluginManager().registerEvents(this, this);
 	}
