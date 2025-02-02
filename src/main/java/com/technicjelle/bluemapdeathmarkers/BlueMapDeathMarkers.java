@@ -1,7 +1,7 @@
 package com.technicjelle.bluemapdeathmarkers;
 
 import com.flowpowered.math.vector.Vector2i;
-import com.technicjelle.BMUtils;
+import com.technicjelle.BMUtils.BMCopy;
 import com.technicjelle.UpdateChecker;
 import de.bluecolored.bluemap.api.BlueMapAPI;
 import de.bluecolored.bluemap.api.BlueMapMap;
@@ -87,7 +87,7 @@ public final class BlueMapDeathMarkers extends JavaPlugin implements Listener {
 			//copy default icon from jar resources
 			String toName = ICON_NAME + ".svg";
 			try {
-				BMUtils.copyJarResourceToBlueMap(api, getClassLoader(), "skull.svg", toName, false);
+				BMCopy.jarResourceToWebApp(api, getClassLoader(), "skull.svg", toName, false);
 			} catch (IOException e) {
 				getLogger().log(Level.SEVERE, "Failed to copy resources to BlueMap webapp!", e);
 			}
