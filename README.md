@@ -5,9 +5,9 @@
 
 Adds temporary markers in the positions where players have died to [BlueMap](https://github.com/BlueMap-Minecraft/BlueMap).
 
-| Demonstration Picture                                                                                                                 |
-| ------------------------------------------------------------------------------------------------------------------------------------- |
-| ![a skull emoji on bluemap](https://github.com/TechnicJelle/BlueMapDeathMarkers/assets/22576047/f31c6b86-8b5d-45ba-bf07-a5e10468ae24) |
+| Demonstration Picture                                       |
+| ----------------------------------------------------------- |
+| ![a skull emoji on bluemap](.github/readme_assets/demo.png) |
 
 Compatible with Paper 1.13+, just like BlueMap itself.
 
