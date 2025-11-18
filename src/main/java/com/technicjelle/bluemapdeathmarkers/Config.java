@@ -14,6 +14,7 @@ public class Config {
 	private final BlueMapDeathMarkers plugin;
 
 	public String markerSetName;
+	public String tooltipSuffix;
 	public boolean toggleable;
 	public boolean defaultHidden;
 	public boolean keepAllMarkers;
@@ -34,6 +35,7 @@ public class Config {
 
 		//Load config values into variables
 		markerSetName = configFile().getString("MarkerSetName");
+		tooltipSuffix = configFile().getString("TooltipSuffix");
 		toggleable = configFile().getBoolean("Toggleable");
 		defaultHidden = configFile().getBoolean("DefaultHidden");
 		keepAllMarkers = configFile().getBoolean("KeepAllMarkers");

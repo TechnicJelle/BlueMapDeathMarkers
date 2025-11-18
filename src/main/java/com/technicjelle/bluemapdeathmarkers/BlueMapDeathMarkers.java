@@ -191,7 +191,7 @@ public final class BlueMapDeathMarkers extends JavaPlugin implements Listener {
 
 	private String formatPopup(String playerName, Location location) {
 		return "<div style='line-height: 1.2em;'>" +
-					"<div style='position: relative;top: 0;left: .5em;margin: 0 .5em;font-size: .9em;'>" + playerName + "</div>" +
+					"<div style='position: relative;top: 0;left: .5em;margin: 0 .5em;font-size: .9em;'>" + playerName +  config.tooltipSuffix + "</div>" +
 					"<div style='display: flex;justify-content: center;min-width: 9em'>" +
 						"<div style='margin: 0 .5em;'>" +
 							"<span style='color: var(--theme-fg-light);'>x:</span>" +

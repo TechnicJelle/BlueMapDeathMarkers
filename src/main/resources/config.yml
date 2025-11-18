@@ -3,6 +3,7 @@
 MarkerSetName: "Death Markers"
 Toggleable: true
 DefaultHidden: false
+TooltipSuffix: "'s death"
 
 # If you want to use a custom icon, just replace the icon in your webroot.
 # You can use SVG or any other picture format (that is supported by Java)
