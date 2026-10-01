@@ -6,6 +6,7 @@ import com.technicjelle.UpdateChecker;
 import de.bluecolored.bluemap.api.BlueMapAPI;
 import de.bluecolored.bluemap.api.BlueMapMap;
 import de.bluecolored.bluemap.api.BlueMapWorld;
+import de.bluecolored.bluemap.api.markers.Marker;
 import de.bluecolored.bluemap.api.markers.MarkerSet;
 import de.bluecolored.bluemap.api.markers.POIMarker;
 import org.bstats.bukkit.Metrics;
@@ -180,11 +181,12 @@ public final class BlueMapDeathMarkers extends JavaPlugin implements Listener {
 			String key = config.keepAllMarkers ? (uuid + "@" + System.currentTimeMillis()) : uuid;
 
 			// Add marker
-			markerSet.put(key, markerBuilder.build());
+			Marker marker = markerBuilder.build();
+			markerSet.put(key, marker);
 
 			// Wait seconds and remove the marker
 			Bukkit.getScheduler().runTaskLater(this,
-					() -> markerSet.remove(key),
+					() -> markerSet.getMarkers().computeIfPresent(key, (k, current) -> current == marker ? null : current),
 					config.expireTimeInMinutes * 20L * 60L);
 		}
 	}
