@@ -10,7 +10,6 @@ import de.bluecolored.bluemap.api.markers.Marker;
 import de.bluecolored.bluemap.api.markers.MarkerSet;
 import de.bluecolored.bluemap.api.markers.POIMarker;
 import org.bstats.bukkit.Metrics;
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -27,6 +26,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Optional;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
 import java.util.logging.Level;
 import java.util.regex.Matcher;
@@ -45,11 +47,20 @@ public final class BlueMapDeathMarkers extends JavaPlugin implements Listener {
 	private UpdateChecker updateChecker;
 	private Config config;
 
+	// Removing a marker only touches BlueMap's API, so it does not go through the server scheduler
+	private ScheduledExecutorService expiryScheduler;
+
 	String iconName;
 	private Vector2i anchor;
 
 	@Override
 	public void onEnable() {
+		expiryScheduler = Executors.newSingleThreadScheduledExecutor(runnable -> {
+			Thread thread = new Thread(runnable, "BlueMapDeathMarkers-expiry");
+			thread.setDaemon(true);
+			return thread;
+		});
+
 		new Metrics(this, 18983);
 
 		updateChecker = new UpdateChecker("TechnicJelle", "BlueMapDeathMarkers", getDescription().getVersion());
@@ -58,6 +69,11 @@ public final class BlueMapDeathMarkers extends JavaPlugin implements Listener {
 		BlueMapAPI.onEnable(onEnable);
 
 		getServer().getPluginManager().registerEvents(this, this);
+	}
+
+	@Override
+	public void onDisable() {
+		expiryScheduler.shutdownNow();
 	}
 
 	Consumer<BlueMapAPI> onEnable = api -> {
@@ -184,10 +200,9 @@ public final class BlueMapDeathMarkers extends JavaPlugin implements Listener {
 			Marker marker = markerBuilder.build();
 			markerSet.put(key, marker);
 
-			// Wait seconds and remove the marker
-			Bukkit.getScheduler().runTaskLater(this,
-					() -> markerSet.getMarkers().computeIfPresent(key, (k, current) -> current == marker ? null : current),
-					config.expireTimeInMinutes * 20L * 60L);
+			// Wait minutes and remove the marker
+			expiryScheduler.schedule(() -> markerSet.getMarkers().computeIfPresent(key, (k, current) -> current == marker ? null : current),
+					config.expireTimeInMinutes, TimeUnit.MINUTES);
 		}
 	}
 
