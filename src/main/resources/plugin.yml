@@ -2,6 +2,7 @@ name: BlueMapDeathMarkers
 version: '${project.version}'
 main: com.technicjelle.bluemapdeathmarkers.BlueMapDeathMarkers
 api-version: '1.13'
+folia-supported: true
 depend:
   - BlueMap
 authors:
